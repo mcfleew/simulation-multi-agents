@@ -2,6 +2,7 @@
                     respawnFrequencyBunny, respawnFrequencyFox, 
                     respawnLevels, sightDistanceFox, 
                     survivalTimeBunny, survivalTimeFox,
+                    lifeExpectancyBunny, lifeExpectancyFox,
                     movementSpeedBunny, movementSpeedFox">
         <div class="field is-horizontal">
             <div class="field-label is-normal">
@@ -115,6 +116,23 @@
                 <div class="field">
                     <div class="control">
                         <input class="input" type="number" value.bind="survivalTimeFox">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Espérance de vie:</label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <div class="control">
+                        <input class="input" type="number" value.bind="lifeExpectancyBunny">
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <input class="input" type="number" value.bind="lifeExpectancyFox">
                     </div>
                 </div>
             </div>

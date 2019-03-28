@@ -38,6 +38,8 @@ export class App {
         this.sightDistanceBunny = 0;
         this.sightDistanceFox = 0;
         //this.survivalTimeBunny = 0;
+        this.lifeExpectancyBunny = 0;
+        this.lifeExpectancyFox = 0;
         this.survivalTimeFox = 0;
         this.movementSpeedBunny = 0;
         this.movementSpeedFox = 0;
@@ -226,6 +228,8 @@ export class App {
         this.sightDistanceFox = 75;
         //this.survivalTimeBunny = 10000;
         this.survivalTimeFox = 200;
+        this.lifeExpectancyBunny = 500;
+        this.lifeExpectancyFox = 1000;
         this.movementSpeedBunny = 12;
         this.movementSpeedFox = 24;
 

@@ -17,6 +17,7 @@ export class Agent {
         this.boundaryH = app.canvasHeight;
         this.boundaryW = app.canvasWidth;
         this.lastMealTime = 0;
+        this.lifeExpectancy = 0;
         //this.size = new jssim.Vector2D(8, 8);
         //this.color = '#00aa00';
         if(isPredator){
@@ -45,6 +46,7 @@ export class Agent {
         this.__proto__.update = function(deltaTime) {
             var boids = this.space.findAllAgents();
             var pos = this.space.getLocation(this.id);
+            this.lifeExpectancy++;
             if(this.isPredator) {
                 if (this.app.foxesDead.includes(this.id)) {
                     return false;
@@ -92,10 +94,19 @@ export class Agent {
                     this.app.foxesDead.push(this.id);
                     this.removeAgent(this.id, true);
                 }
-                
+                if (this.lifeExpectancy > this.app.lifeExpectancyFox) {
+                    // Death de vieillesse
+                    this.app.foxesDead.push(this.id);
+                    this.removeAgent(this.id, true);
+                }
             } else {
                 if (this.app.bunniesKilled.includes(this.id)) {
                     return false;
+                }
+                if (this.lifeExpectancy > this.app.lifeExpectancyBunny) {
+                    // Death de vieillesse
+                    this.app.bunniesKilled.push(this.id);
+                    this.removeAgent(this.id, true);
                 }
 
                 for (var boidId in boids)
