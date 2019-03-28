@@ -1,0 +1,36 @@
+<template bindable="bunnies, foxes, bunniesKilled, foxesDead, simulationTime">
+    <div class="hero-head">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">Nombre de lapins</p>
+                <p class="title">${bunnies.length}</p>
+              </div>
+            </div>
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">Nombre de renards</p>
+                <p class="title">${foxes.length}</p>
+              </div>
+            </div>
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">Lapins tués</p>
+                <p class="title">${bunniesKilled.length}</p>
+              </div>
+            </div>
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">Renards morts</p>
+                <p class="title">${foxesDead.length}</p>
+              </div>
+            </div>
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">Temps d'éxécution</p>
+                <p class="title">${simulationTime}</p>
+              </div>
+            </div>
+          </nav>
+    </div>
+</template>

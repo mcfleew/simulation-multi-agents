@@ -1,0 +1,137 @@
+<template bindable="canvasWidth, canvasHeight,
+                    showChart, numberOfMeasures, chartLastMeasuresNumber,
+                    avatarFileNameBunny, avatarFileNameFox,
+                    chartUpdateFrequency, updateFrequencies,
+                    chartUpdateMeasurement, updateMeasurement">
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Dimmensions du canvas:</label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <p class="control has-icons-left has-icons-right">
+                      <input class="input is-rounded" type="range" min="0" max="1500" value.bind="canvasWidth">
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-arrows-alt-h"></i>
+                      </span>
+                    </p>
+                  </div>
+                  <div class="field">
+                    <p class="control has-icons-left">
+                      <input class="input is-rounded" type="range" min="0" max="750" value.bind="canvasHeight">
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-arrows-alt-v"></i>
+                      </span>
+                    </p>
+                  </div>
+            </div>
+        </div>
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Afficher tendance:</label>
+            </div>
+            <div class="field-body">
+                <div class="field is-expanded">
+                    <div class="control">
+                        <label class="checkbox">
+                            <input type="checkbox" checked.bind="showChart">
+                            Afficher le graphique détaillé de l'évolution des lapins et des renards
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Mise à jour:</label>
+            </div>
+            <div class="field-body">
+                <div class="field is-expanded">
+                    <div class="control">
+                        Mettre à jour le graphique toutes les 
+                        <div class="select is-small">
+                                <select value.bind="chartUpdateFrequency">
+                                    <option repeat.for="update of updateFrequencies"
+                                            model.bind="update.frequency">
+                                        ${update.frequency}
+                                    </option>
+                                </select>
+                        </div>
+                        <label repeat.for="update of updateMeasurement">
+                          <input type="radio" name="EMNA"
+                                  model.bind="update.measurement" checked.bind="chartUpdateMeasurement">
+                          ${update.title}
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Histrorique:</label>
+            </div>
+            <div class="field-body">
+                <div class="field is-expanded">
+                    <div class="control">
+                        Concerver les dernières 
+                        <div class="select is-small">
+                            <select value.bind="chartLastMeasuresNumber">
+                                <option repeat.for="number of numberOfMeasures"
+                                        model.bind="number.count">
+                                    ${number.count}
+                                </option>
+                                <option model.bind="0">ALL</option>
+                            </select>
+                        </div> occurences
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Choix des avatars:</label>
+            </div>
+            <div class="field-body">
+                    <div class="field">
+                        <div class="control">
+                            <div class="file has-name is-fullwidth">
+                                <label class="file-label">
+                                <input class="file-input" type="file" accept="image/*" files.bind="avatarFileNameBunny">
+                                <span class="file-cta">
+                                    <span class="file-icon">
+                                        <i class="fas fa-carrot"></i>
+                                    </span>
+                                    <span class="file-label">
+                                        Lapin
+                                    </span>
+                                </span>
+                                <span class="file-name">
+                                    ${avatarFileNameBunny ? avatarFileNameBunny[0].name : 'bunny.png'}
+                                </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <div class="file has-name is-right is-fullwidth">
+                                <label class="file-label">
+                                <input class="file-input" type="file" accept="image/*" files.bind="avatarFileNameFox">
+                                <span class="file-cta">
+                                    <span class="file-icon">
+                                        <i class="fas fa-drumstick-bite"></i>
+                                    </span>
+                                    <span class="file-label">
+                                        Renard
+                                    </span>
+                                </span>
+                                <span class="file-name">
+                                        ${avatarFileNameFox ? avatarFileNameFox[0].name : 'fox.png'}
+                                </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+</template>

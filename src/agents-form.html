@@ -1,0 +1,143 @@
+<template bindable="initialNumberOfBunnies, initialNumberOfFoxes,
+                    respawnFrequencyBunny, respawnFrequencyFox, 
+                    respawnLevels, sightDistanceFox, 
+                    survivalTimeBunny, survivalTimeFox,
+                    movementSpeedBunny, movementSpeedFox">
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label"></label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <div class="control">
+                        <p class="help is-info is-large">Lapins</p>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <p class="help is-info is-large">Renards</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Nombre initial:</label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <div class="control">
+                        <input class="input" type="number" min="0" max="1000" value.bind="initialNumberOfBunnies">
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <input class="input" type="number" min="0" max="100" value.bind="initialNumberOfFoxes">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Fréquence d'apparition:</label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <div class="control">
+                        <div class="control has-icons-left">
+                            <div class="select">
+                                <select value.bind="respawnFrequencyBunny">
+                                    <option repeat.for="respawnLevel of respawnLevels"
+                                            model.bind="respawnLevel.frequency">
+                                        ${respawnLevel.title}
+                                    </option>
+                                </select>
+                            </div>
+                            <span class="icon is-left">
+                                <i class="fas fa-redo-alt"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <!--<p class="control has-icons-left">-->
+                            <input class="input" type="text" value.bind="respawnFrequencyFox + ' ('+(respawnFrequencyFox /10)+' * 10)'" readonly>
+                            <!--<span class="icon is-small is-left">
+                                <i class="fas fa-redo-alt"></i>
+                            </span>-->
+                       <!--</p>-->
+                        <!--<div class="control has-icons-left">
+                            <div class="select">
+                                <select value.bind="respawnFrequencyFox" disabled>
+                                    <option value="1000">Très très lente</option>
+                                    <option value="500">Très lente</option>
+                                    <option value="250">Lente</option>
+                                    <option value="100">Normale</option>
+                                    <option value="50">Rapide</option>
+                                    <option value="25">Très Rapide</option>
+                                    <option value="10">Très très rapide</option>
+                                    <option value="0">Pas d'apparition</option>
+                                </select>
+                            </div>
+                            <span class="icon is-left">
+                                <i class="fas fa-redo-alt"></i>
+                            </span>
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Champs de vision:</label>
+            </div>
+            <div class="field-body">
+                <div class="field is-expanded">
+                    <div class="control">
+                        <input class="input" type="range" 
+                                min="0" max="500" step="25" 
+                                value.bind="sightDistanceFox">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Temps de survie sans nourriture:</label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <div class="control">
+                        <input class="input" type="text" value="Infini..." disabled>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <input class="input" type="number" value.bind="survivalTimeFox">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Vitesse:</label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <div class="control">
+                        <input class="input" type="range" 
+                                min="1" max="50" step="1" 
+                                value.bind="movementSpeedBunny"/>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <input class="input" type="range" 
+                                min="1" max="50" step="1" 
+                                value.bind="movementSpeedFox"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+</template>

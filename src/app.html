@@ -1,0 +1,121 @@
+<template>
+    <section class="hero is-primary is-fullheight">
+        <!-- Hero head: will stick at the top -->
+        <require from="./hero-header.html"></require>
+        <div as-element="hero-header" 
+            bunnies.bind="bunnies"
+            foxes.bind="foxes"
+            bunnies-killed.bind="bunniesKilled"
+            foxes-dead.bind="foxesDead"
+            simulation-time.bind="simulationTime"></div>
+        
+        <!-- Hero content: will be in the middle -->
+        <div class="hero-body">
+          <div class="container">
+            <div show.bind="showTitle" class="container has-text-centered">
+              <h1 class="title">
+                  TP Système multi-agents
+              </h1>
+              <h2 class="subtitle">
+                  Résolution problèmes complexes
+              </h2>
+              <button class="button is-primary is-inverted"  click.trigger="initForm()">Commencer</button>
+            </div>
+            <div show.bind="showForm" class="box">
+              <require from="./agents-form.html"></require>
+              <form as-element="agents-form" 
+                initial-number-of-bunnies.two-way="initialNumberOfBunnies"
+                initial-number-of-foxes.two-way="initialNumberOfFoxes"
+                respawn-frequency-bunny.two-way="respawnFrequencyBunny"
+                respawn-frequency-fox.two-way="respawnFrequencyFox"
+                respawn-levels.two-way="respawnLevels"
+                sight-distance-fox.two-way="sightDistanceFox"
+                survival-time-bunny.two-way="survivalTimeBunny"
+                survival-time-fox.two-way="survivalTimeFox"
+                movement-speed-bunny.two-way="movementSpeedBunny"
+                movement-speed-fox.two-way="movementSpeedFox">
+              </form>
+              <div class="buttons has-addons is-right">
+                <span class="button is-text" show.bind="!showOptions" click.trigger="showMoreOptions(true)">Afficher plus d'options</span>
+                <span class="button is-text" show.bind="showOptions" click.trigger="showMoreOptions(false)">Afficher moins d'options</span>
+              </div>
+              <require from="./agents-form-options.html"></require>
+              <form as-element="agents-form-options" show.bind="showOptions" 
+                canvas-width.two-way="canvasWidth"
+                canvas-height.two-way="canvasHeight"
+                show-chart.two-way="showChart"
+                number-of-measures.two-way="numberOfMeasures"
+                chart-last-measures-number.two-way="chartLastMeasuresNumber"
+                avatar-file-name-bunny.two-way="avatarFileNameBunny"
+                avatar-file-name-fox.two-way="avatarFileNameFox"
+                chart-update-frequency.two-way="chartUpdateFrequency"
+                update-frequencies.two-way="updateFrequencies"
+                chart-update-measurement.two-way="chartUpdateMeasurement"
+                update-measurement.two-way="updateMeasurement">
+              </form>
+              <hr>
+              <div class="buttons">
+                <span class="button is-dark is-fullwidth" click.trigger="resetForm()">Réinitialiser les valeurs</span>
+                <span class="button is-primary is-fullwidth" click.trigger="initCanvas(false)">Reprendre</span>
+                <span class="button is-success is-fullwidth" click.trigger="initCanvas(true)">Initialiser</span>
+              </div>
+            </div>
+            <div show.bind="showCanvas" class="box">
+              <canvas id="myCanvas" width.bind="canvasWidth" height.bind="canvasHeight" style="border:1px solid #000000;"></canvas>
+              <div class="tabs is-toggle is-fullwidth">
+                <ul>
+                  <li>
+                    <a click.trigger="initCanvas(true)">
+                      <span class="icon is-small">
+                        <i class="fas fa-backward"></i>
+                      </span>
+                      <span>Rejouer</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a click.trigger="playCanvas(0)">
+                      <span class="icon is-small">
+                        <i class="fas fa-pause"></i>
+                      </span>
+                      <span>Pause</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a click.trigger="playCanvas(100)">
+                      <span class="icon is-small">
+                          <i class="fas fa-play"></i>
+                      </span>
+                      <span>Lire</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a click.trigger="playCanvas(400)">
+                      <span class="icon is-small">
+                          <i class="fas fa-step-forward"></i>
+                      </span>
+                      <span>Ralenti</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a click.trigger="playCanvas(25)">
+                      <span class="icon is-small">
+                          <i class="fas fa-fast-forward"></i>
+                      </span>
+                      <span>Avance rapide</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <button class="button is-danger is-fullwidth"  click.trigger="stopCanvas()">Retour</button>
+            </div>
+            <div show.bind="showChart" class="box">
+              <canvas id="myChart" width.bind="canvasWidth" height.bind="canvasHeight" style="border:1px solid #000000;"></canvas>
+            </div>    
+          </div>    
+        </div>
+        
+        <!-- Hero footer: will stick at the bottom -->
+        <require from="./hero-footer.html"></require>
+        <div as-element="hero-footer"></div>
+    </section>
+</template>
