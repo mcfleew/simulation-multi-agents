@@ -67,7 +67,7 @@ export class Agent {
                             this.app.bunniesKilled.push(boidId);
                             this.removeAgent(boidId, false);
                         } else if(this.sight > distance) {
-                            this.sight = distance;
+                            //this.sight = distance;
                             prey = boid;
                         }
                     } else {
@@ -169,12 +169,13 @@ export class Agent {
         }
                 
         this.__proto__.draw = function(context, pos) {
-            if (this.isPredator) {
-                context.drawImage(fox_icon, pos.x, pos.y);
-            } else {
-                context.drawImage(bunny_icon, pos.x, pos.y);
+            if (!this.app.bunniesKilled.includes(this.id) && !this.app.foxesDead.includes(this.id)) {
+                if (this.isPredator) {
+                    context.drawImage(fox_icon, pos.x, pos.y);
+                } else {
+                    context.drawImage(bunny_icon, pos.x, pos.y);
+                }
             }
-            
         };
     }
 }
